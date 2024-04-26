@@ -10,38 +10,60 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
-export default function MediaCard() {
+export default function MediaCard({ data }) {
+  /* console.log(data); */
   return (
-    <Card sx={{ maxWidth: 345, padding: 2}}>
-      <Box>
-      <CardMedia
-        sx={{ height: 240, width: 300, backgroundSize: "contain",margin: "auto" }}
-        image="/react-data/profile3.png"
-        title="profile image"
-      />
-      </Box>
-      <PetsIcon />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          John smith
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Department: UX/UI Design
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Position: UI Designer
-        </Typography>
-        <Stack direction="row" spacing={1} sx={{ marginTop: 2, justifyContent: "center" }}>
-      <Chip label="figma" />
-      <Chip label="adobeXD" />
-      <Chip label="sketch" />
-    </Stack>
+    <>
+      {data.map((item, index) => (
 
-      </CardContent>
-      <Stack direction="row" spacing={1} sx={{ marginTop: 2, justifyContent: "center" }}>
-      <Chip label="Active" variant="outlined" />
-      <Chip label="Hours: 20" variant="outlined" />
-    </Stack>
-    </Card>
+      
+        <Card sx={{ maxWidth: 345, padding: 2, marginTop:2 }}>
+        <Box>
+        <CardMedia
+          sx={{ height: 240, width: 300, backgroundSize: "contain",margin: "auto" }}
+          image={`/react-data/${item.image}`}
+          title="profile image"
+        />
+        </Box>
+        <PetsIcon />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          {item.firstName} {item.lastName}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {item.department}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {item.position}
+          </Typography>
+          <Stack
+           direction="row"
+           flexWrap="wrap"
+           spacing={1} 
+           sx={{ marginTop: 2, justifyContent: "center" }}
+          >
+        {item.skills.map((skill, skillIndex) => (
+          <Chip key={skillIndex} label={skill} />
+        ))}
+      </Stack>
+  
+        </CardContent>
+        <Stack direction="row" spacing={1} sx={{ marginTop: 2, justifyContent: "center" }}>
+        <Chip label={item.onLeave ? "Inactive" : "Active"} variant="outlined" />
+        <Chip label={`Hours: ${item.hoursLoggedThisWeek}`}
+         variant={item.onLeave ? "outlined" : ""}
+          />
+      </Stack>
+      </Card>
+      
+     
+     
+     
+      ))
+    }
+</>
+
+
+   
   );
 }
