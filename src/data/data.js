@@ -9,7 +9,7 @@ const data = [{
   "employmentType": "Part-Time",
   "skills": ["Sketch", "Figma", "Adobe XD"],
   "hoursLoggedThisWeek": 20,
-  "onLeave": false
+  "onLeave": false,
 },
 
 {
@@ -23,7 +23,7 @@ const data = [{
   "employmentType": "Remote",
   "skills": ["SEO", "Content Marketing", "Google Analytics"],
   "hoursLoggedThisWeek": 35,
-  "onLeave": false
+  "onLeave": true,
 },
 
 {
@@ -37,7 +37,7 @@ const data = [{
   "employmentType": "Full-Time",
   "skills": ["Node.js", "MongoDB", "Express"],
   "hoursLoggedThisWeek": 40,
-  "onLeave": true
+  "onLeave": true,
 },
 
 {
